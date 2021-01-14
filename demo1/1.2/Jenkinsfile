@@ -5,7 +5,6 @@ pipeline {
     }
     stages {
         stage('Build') {
-            agent any
             environment {
                 LOG_LEVEL='INFO'
             }
@@ -14,22 +13,22 @@ pipeline {
                     steps {
                         echo "Building release ${RELEASE} for ${STAGE_NAME} with log level ${LOG_LEVEL}"
                     }
-                }
+                } 
                 stage('linux-amd64') {
                     steps {
                         echo "Building release ${RELEASE} for ${STAGE_NAME} with log level ${LOG_LEVEL}"
                     }
-                }
+                } 
                 stage('windows-amd64') {
                     steps {
                         echo "Building release ${RELEASE} for ${STAGE_NAME} with log level ${LOG_LEVEL}"
                     }
-                }
+                } 
             }
         }
         stage('Test') {
             steps {
-                echo "Testing release  ${RELEASE}"
+                echo "Testing releas ${RELEASE}..."
             }
         }
         stage('Deploy') {
@@ -37,19 +36,17 @@ pipeline {
                 message 'Deploy?'
                 ok 'Do it!'
                 parameters {
-                    string(name: 'TARGET_ENVIRONMENT', defaultValue: 'PROD', description: 'Target deployment env') 
+                    string(name: 'TARGET_ENVIRONMENT', defaultValue: 'PROD', description: 'Target deployment env')
                 }
             }
-
             steps {
                 echo "Deploying ${RELEASE} to env ${TARGET_ENVIRONMENT}"
             }
         }
     }
-
     post {
         always {
-            echo 'Prints wether deploy happende or not, success or failure'
+            echo 'Prints wether deploy happened or not, success or failure'
         }
     }
 }
