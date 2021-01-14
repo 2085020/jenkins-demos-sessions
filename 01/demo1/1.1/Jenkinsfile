@@ -28,7 +28,7 @@ pipeline {
                         dotnet test --logger "trx;LogFileNAme=Pi.Math.trx" Pi.Math.Tests/Pi.Math.Tests.csproj
                         dotnet test --logger "trx;LogFileNAme=Pi.Runtime.trx" Pi.Runtime.Tests/Pi.Runtime.Tests.csproj
                     '''
-                    mstest testResultsFile
+                    mstest testResultsFile:"**/*.trx", keepLongStdio: true
                 }
             }    
         }
