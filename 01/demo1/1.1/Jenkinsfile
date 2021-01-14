@@ -1,4 +1,7 @@
 // https://github.com/2085020/jenkins-library-sessions-1.git
+
+// Validate Jenkisfile
+// curl --user lemoncode:lemoncode -X POST -F "jenkinsfile=<./Jenkinsfile" http://localhost:8080/pipeline-model-converter/validate
 library identifier: 'jenkins-library-sessions-1@master',
         retriever: modernSCM([$class:'GitSCMSource', remote: 'https://github.com/2085020/jenkins-library-sessions-1.git'])
 
